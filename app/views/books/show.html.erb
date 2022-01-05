@@ -10,6 +10,17 @@
   		<h2>Book detail</h2>
   		<table class='table'>
 
+  		  <% if @error_comment.present? %>
+    <div id="error_explanation">
+      <h2><%= @error_comment.errors.count %>件のエラーが発生しました。</h2>
+      <ul>
+        <% @error_comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+        <% end %>
+
 
   		  <tbody>
   		    <td><%= link_to user_path(@book.user) do %>
