@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
 
   protected
   def after_sign_in_path_for(resource)
-    user_path(current_user.id)
+    admin_items_path
   end
 
   def after_sign_out_path_for(resource)
-    root_path
+    new_admin_session
   end
 
   private
