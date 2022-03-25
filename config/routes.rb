@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'chats/show'
   get 'relationships/followings'
   get 'relationships/followers'
   root 'homes#top'
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+
+  get 'chat/:id', to: 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 
   # ネストさせる
   resources :users do
